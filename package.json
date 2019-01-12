@@ -1,0 +1,23 @@
+{
+  "name": "aieubot",
+  "version": "0.0.1",
+  "description": "A bot for AIEU's discord server",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyvanhout/AIEUBot.git"
+  },
+  "author": "AJVH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andyvanhout/AIEUBot/issues"
+  },
+  "homepage": "https://github.com/andyvanhout/AIEUBot#readme"
+}

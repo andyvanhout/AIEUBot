@@ -1,24 +1,39 @@
-//this is a discord bot file
-//
-//write something to make the bot log in
-//also write more to-dos
-
-//client ID = 327308932878041089
-//secret = 9OEaZRfeRzK7S7vjI7Z_0IsYZHIjJko6
-
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const settings = require('./settings.json');
+const token = require('./settings.json').token;
+
+let prefix = "!"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("!help for Info");
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
+  if (msg.author.bot) {
+    return null;
+  } 
+  
+  else if (msg.content.startsWith(prefix + 'help')) {
+    msg.channel.send(
+      "\`\`\`Available Commands: \n!help -- Details available commands \n!evetime -- Displays the current EVE Time.\`\`\`")
   }
+
+  else if (msg.content.startsWith(prefix + 'evetime')) {
+    let evetime = new Date().toUTCString().replace('GMT', 'EVE');
+    console.log(evetime);
+    msg.reply(evetime);
+  }
+
+  else if (msg.content.startsWith(prefix + 'ping')) {
+    msg.channel.send(`Pong! \`${Date.now() - msg.createdTimestamp} ms\``);
+  } 
+  
+  else {
+    console.log("Something is broken");
+  }
+
 });
 
-client.login(settings.token);
+client.login(token);

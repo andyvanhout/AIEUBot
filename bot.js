@@ -1,39 +1,43 @@
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const token = require('./settings.json').token;
+const bot = new Discord.Client();
+const settings = require('./settings.json');
 
-let prefix = "!"
+let prefix = settings.prefix
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity("!help for Info");
+bot.on('ready', () => {
+  console.log(`Logged in as ${bot.user.tag}!`);
+  bot.user.setActivity("Testing, Not Production");
 });
 
-client.on('message', msg => {
-  if (msg.author.bot) {
-    return null;
-  } 
+bot.on('message', msg => {
   
-  else if (msg.content.startsWith(prefix + 'help')) {
-    msg.channel.send(
-      "\`\`\`Available Commands: \n!help -- Details available commands \n!evetime -- Displays the current EVE Time.\`\`\`")
-  }
+  if (!msg.author.bot) {
+    switch (msg.content) {
+      case (prefix + "help"):
+        msg.channel.send(
+          "\`\`\`Available Commands:" +
+          "\n!help -- Details available commands" +
+          "\n!evetime -- Displays the current EVE Time." +
+          "\n!ping -- I don't actually know what this does.\`\`\`");
+        break;
+      
+      case (prefix + "evetime"):
+        let evetime = new Date().toUTCString().replace('GMT', 'EVE');
+        console.log(evetime);
+        msg.reply(evetime);
+        break;
 
-  else if (msg.content.startsWith(prefix + 'evetime')) {
-    let evetime = new Date().toUTCString().replace('GMT', 'EVE');
-    console.log(evetime);
-    msg.reply(evetime);
-  }
+      case (prefix + 'ping'):
+        msg.channel.send(`Pong! \`${Date.now() - msg.createdTimestamp} ms\``);
+        break;
 
-  else if (msg.content.startsWith(prefix + 'ping')) {
-    msg.channel.send(`Pong! \`${Date.now() - msg.createdTimestamp} ms\``);
-  } 
-  
-  else {
-    console.log("Something is broken");
+      default:
+        console.log(`Not a command, message is: ${msg.content}`);
+        break;
+    }
+  } else {
+    console.log(`Bot message: ${msg.content}`);
   }
-
 });
-
-client.login(token);
+bot.login(settings.token);

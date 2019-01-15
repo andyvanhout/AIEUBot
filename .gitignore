@@ -1,3 +1,6 @@
+#Discord.js and dependencies
 node_modules
+
+#Configuration file
 settings.json
 bot_todo.txt

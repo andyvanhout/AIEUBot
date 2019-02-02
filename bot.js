@@ -1,43 +1,36 @@
+const fs = require('fs');
+const Enmap = require("enmap");
+const Discord = require("discord.js");
 
-const Discord = require('discord.js');
 const bot = new Discord.Client();
 const settings = require('./settings.json');
 
-let prefix = settings.prefix
+bot.settings = settings
+bot.commands = new Enmap();
 
-bot.on('ready', () => {
-  console.log(`Logged in as ${bot.user.tag}!`);
-  bot.user.setActivity("Testing, Not Production");
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+      if (!file.endsWith(".js")) return;
+      const event = require(`./events/${file}`);
+      let eventName = file.split(".")[0];
+      //I have only a vague idea what's happening here.
+      bot.on(eventName, event.bind(null, bot));
+      //I definitely have no idea what's happening here or if it even is needed
+      delete require.cache[require.resolve(`./events/${file}`)];
+  });
 });
 
-bot.on('message', msg => {
-  
-  if (!msg.author.bot) {
-    switch (msg.content) {
-      case (prefix + "help"):
-        msg.channel.send(
-          "\`\`\`Available Commands:" +
-          "\n!help -- Details available commands" +
-          "\n!evetime -- Displays the current EVE Time." +
-          "\n!ping -- I don't actually know what this does.\`\`\`");
-        break;
-      
-      case (prefix + "evetime"):
-        let evetime = new Date().toUTCString().replace('GMT', 'EVE');
-        console.log(evetime);
-        msg.reply(evetime);
-        break;
 
-      case (prefix + 'ping'):
-        msg.channel.send(`Pong! \`${Date.now() - msg.createdTimestamp} ms\``);
-        break;
-
-      default:
-        console.log(`Not a command, message is: ${msg.content}`);
-        break;
-    }
-  } else {
-    console.log(`Bot message: ${msg.content}`);
-  }
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+      if (!file.endsWith(".js")) return;
+      let props = require(`./commands/${file}`);
+      let commandName = file.split(".")[0];
+      console.log(`Attempting to load command ${commandName}`);
+      bot.commands.set(commandName, props);
+  });
 });
-bot.login(settings.token);
+
+bot.login(settings.token)

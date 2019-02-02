@@ -4,7 +4,8 @@
   "description": "A bot for AIEU's discord server",
   "main": "bot.js",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "enmap": "^4.7.0"
   },
   "devDependencies": {},
   "scripts": {

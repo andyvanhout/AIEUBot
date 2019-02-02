@@ -19,4 +19,4 @@ Much of the bot, particularly the command handler, was shamelessly stolen from f
 
 I tore the code apart and broke it to figure out how it works, but I'll still leave comments in the when I make the repo public to show where I have no idea what's going on and where dark Javascript magic is happening.
 
-Maybe I'll improved this readme some day.
+Maybe I'll improve this readme some day.

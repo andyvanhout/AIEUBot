@@ -4,8 +4,12 @@
   "description": "A bot for AIEU's discord server",
   "main": "bot.js",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.4.2",
-    "enmap": "^4.7.0"
+    "enmap": "^4.7.0",
+    "puppeteer": "^1.12.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {},
   "scripts": {

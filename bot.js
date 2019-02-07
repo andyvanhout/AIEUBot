@@ -4,7 +4,6 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client();
 
-bot.settings = settings
 bot.commands = new Enmap();
 
 fs.readdir("./events/", (err, files) => {

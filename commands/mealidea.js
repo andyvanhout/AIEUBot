@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 
 exports.run = (bot, message, args) => {;
+    message.reply("Thinking...");
     let scrape = async () => {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();

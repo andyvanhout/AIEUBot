@@ -10,10 +10,11 @@ exports.run = (bot, message, args) => {;
             let recipeText = document.querySelector('span.title').innerText;
             return recipeText;
         })
-            browser.close();
-            return result;
-        }
-        scrape().then((value) => {
-            message.reply(value);
-        });
+            
+        browser.close();
+        return result;
     }
+    scrape().then((value) => {
+        message.reply(value);
+    });
+}

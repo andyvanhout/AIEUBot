@@ -2,9 +2,9 @@ module.exports = (bot, message) => {
     //do nothing for bot messages
     if (message.author.bot) return;
     //do nothing if the message doesn't start with your prefix
-    if (message.content.indexOf(bot.settings.prefix) !== 0) return;
+    if (message.content.indexOf(process.env.prefix) !== 0) return;
     //store some args, figure out the command
-    const args = message.content.slice(bot.settings.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     //with the figured out command, get the command
     const cmd = bot.commands.get(command);

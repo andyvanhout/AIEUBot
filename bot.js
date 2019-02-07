@@ -3,7 +3,6 @@ const Enmap = require("enmap");
 const Discord = require("discord.js");
 
 const bot = new Discord.Client();
-const settings = require('./settings.json');
 
 bot.settings = settings
 bot.commands = new Enmap();

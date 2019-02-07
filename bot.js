@@ -33,4 +33,4 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-bot.login(settings.token)
+bot.login(process.env.token)

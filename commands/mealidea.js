@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 exports.run = (bot, message, args) => {;
     message.reply("Thinking...");
     let scrape = async () => {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
         const page = await browser.newPage();
         await page.goto('https://www.randomlists.com/random-recipes');
         

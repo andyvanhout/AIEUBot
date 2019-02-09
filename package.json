@@ -6,7 +6,8 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "enmap": "^4.7.0",
-    "puppeteer": "^1.12.1"
+    "puppeteer": "^1.12.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {},
   "scripts": {

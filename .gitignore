@@ -3,3 +3,4 @@ node_modules
 
 #Configuration file
 settings.json
+package-lock.json

@@ -17,12 +17,12 @@ exports.run = (bot, message, args) => {
         let sellPrice = results.appraisal.items[0].prices.sell.median
         let buyPrice = results.appraisal.items[0].prices.buy.median
 
-        message.channel.reply(
+        message.reply(
             `Item: ${item}` +
             `\nJita Sell: ${sellPrice}` +
             `\nJita Buy: ${buyPrice}`
         )
-        .catch(message.channel.reply("This is not a valid item."));
+        .catch(message.reply("This is not a valid item."));
 
 });
 };

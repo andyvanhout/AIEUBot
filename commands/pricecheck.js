@@ -3,7 +3,7 @@ const request = require("request");
 exports.run = (bot, message, args) => {
     const options = { method: 'POST',
     url: 'https://evepraisal.com/appraisal.json',
-    qs: { market: 'jita', raw_textarea: args[0], persist: 'no' },
+    qs: { market: 'jita', raw_textarea: args.join(' '), persist: 'no' },
     headers: 
         { 'User-Agent': 'AIEU_Discord_Bot',
         'cache-control': 'no-cache' }

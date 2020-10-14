@@ -1,3 +1,5 @@
+You shouldn't use this, because the packages have vulnerabilities.  I'll fix it, one day.  Maybe.
+
 AIEU Bot
 
 I have no idea what I'm doing.
@@ -16,7 +18,7 @@ Much like no have candle, you can no have my settings.json file and yes the secr
 }
 
 
-Much of the bot, particularly the command handler, was shamelessly stolen from following the tutorial at https://anidiots.guide/.
+Much of the bot, particularly the command handler, was shamelessly stolen from following the tutorial at https://anidiots.guide/
 
 I tore the code apart and broke it to figure out how it works, but I'll still leave comments in the when I make the repo public to show where I have no idea what's going on and where dark Javascript magic is happening.
 
